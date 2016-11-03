@@ -5,45 +5,41 @@ def hello():
     print ('betkas')
 
 def tictactoe():
-    row  = ' |'.join([' '] * 3)
-    collumn = ('-' * 8)
-    print (row)
-    print (collumn)
-    print (row)
-    print (collumn)
-    print (row) # neveike sep komanda kazkodel
+    row  = ' |'.join([' '] * 3) + '\n'
+    column = ('-' * 8 + '\n')
+    print (row, row, row, sep = column)
 
 def fizz():
-    n = input ('number:')
-    hey = []
-    while n != 0:
-        if n % 5 == 0 or n % 3 == 0:
-            hey.append(n)
-        n = n - 1
-    print (sum(hey))
+    userInput = input ('number:')
+    chain = []
+    while userInput != 0:
+        if userInput % 5 == 0 or userInput % 3 == 0:
+            hey.append(userInput)
+        userInput -= 1
+    print (sum(chain))
 
 def collatz():
-    n = input ('number:')
-    hey = []
+    userInput = input ('number:')
+    chain = []
+    i = userInput
     x = 0
-    y = n
-    while y > 0:
-        while n != 1:
-            if n/2 == int(n/2):
-                n = n/2
-                n = int(n)
+    while i > 0:
+        while userInput != 1:
+            if userInput / 2 == round(userInput / 2):
+                userInput = userInput / 2
+                userInput = round(userInput)
             else:
-                 n = n*3+1
-                 n = int(n)
-            x = x+1
-        y = y-1
-        n = y
-        hey.append(x)
+                userInput = userInput * 3 + 1
+                userInput = round(userInput)
+            x += 1
+        i -= 1
+        userInput = i
+        chain.append(x)
         x = 0
-    print (max(hey))
+    print (max(chain))
 
 if __name__ == "__main__":
-    hello()
+    #hello()
     tictactoe()
-    fizz()
-    collatz()
+    #fizz()
+    #collatz()
