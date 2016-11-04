@@ -9,6 +9,20 @@ def tictactoe():
     column = ('-' * 8 + '\n')
     print (row, row, row, sep = column)
 
+def supertictactoe():
+    row1 = ' |'.join([' '] * 3)
+    column1 = ('+'.join(["--"] * 3))
+    row2 = ' H'.join([row1] * 3) + '\n'
+    column2 = 'H'.join([column1] * 3) + "\n"
+    column3 = '+'.join(["=" * 8] * 3) + "\n"
+    row3 =  ' H'.join([row1] * 3)
+    column3 = column3.rstrip()
+    print(row2, row2, row3, sep = column2)
+    print (column3)
+    print(row2, row2, row3, sep = column2)
+    print (column3)
+    print(row2, row2, row3, sep = column2)
+
 def fizz():
     userInput = input ('number:')
     chain = []
@@ -50,6 +64,7 @@ def temperature():
 if __name__ == "__main__":
     #hello()
     #tictactoe()
+    supertictactoe()
     #fizz()
     #collatz()
-    temperature()
+    #temperature()
