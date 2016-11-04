@@ -15,8 +15,8 @@ def supertictactoe():
     row2 = ' H'.join([row1] * 3) + '\n'
     column2 = 'H'.join([column1] * 3) + "\n"
     column3 = '+'.join(["=" * 8] * 3) + "\n"
-    row3 =  ' H'.join([row1] * 3)
-    column3 = column3.rstrip()
+    row3 =  ' H'.join([row1] * 3) #cia, kad tarpu pries =+ skyrima
+    column3 = column3.rstrip() #cia, kad tarpu nepaliktu po =+ skyrimo
     print(row2, row2, row3, sep = column2)
     print (column3)
     print(row2, row2, row3, sep = column2)
