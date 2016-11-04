@@ -38,8 +38,18 @@ def collatz():
         x = 0
     print (max(chain))
 
+def temperature():
+    userInput = int(input('temperature F?'))
+    tFahrenheit = (userInput - 32) / 1.8
+    if tFahrenheit != round(tFahrenheit):
+        print ("It is", round(tFahrenheit, 2), 'degrees Celsius')
+    else:
+        print ("It is", round(tFahrenheit), 'degrees Celsius')
+
+
 if __name__ == "__main__":
     #hello()
-    tictactoe()
+    #tictactoe()
     #fizz()
     #collatz()
+    temperature()
