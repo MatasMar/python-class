@@ -1,4 +1,5 @@
 #!/usr/bin/env python3 -tt
+import csv
 
 def gcd():
     userInputA = int(input("number a:"))
@@ -12,29 +13,43 @@ def gcd():
     print ('greatest common divisor:', max(GCD))
 
 def reverseDictionary():
-    dictionary = {}
-    values = []
-    newValue = 'y'
-    while newValue == 'y':
-        newValue = input('do you want to create a new dictionary value? (y for yes):')
-        if newValue == 'y':
-            userInput = input('dictionary item: ')
-            userinputValue = input('item value: ').split()
-            dictionary[userInput] = userinputValue
-            values.append(userInput)
-    print (values[0])
-    print (dictionary)
-    x = len(values)
+    dictionary = {"CA": "US", "NY": "US", "ON": "CA"}
+    inverse_dictionary = {}
+    for key, value in dictionary.items():
+        if value not in inverse_dictionary:
+            inverse_dictionary[value] = []
+        inverse_dictionary[value].append(key)
+    print (inverse_dictionary)
+
+def triangleWords():
+   with open('words', newline= '') as inputfile:
+       results = inputfile.read().split()
+       resultsList = []
+       miniResultsList = []
+       x = len(results) - 6
+       y = len(list(results[len(results) - x])) - 1
+       print (ord(''.join(list(results[len(results) - x])[len(list(results[len(results) - x])) - y])))
+       print (y)
+       print (x)
+       print (len(results))
+       while y >= 0:
+           miniResultsList.append(ord(''.join(list(results[len(results) - x])[len(list(results[len(results) - x])) - y])))
+           y -= 1
+       print (miniResultsList)
+
+def pascal():
+    pascal_triangle_line = [1, 5, 10, 10, 5, 1] #nezinau ar reikejo input padaryt, ar ne 
+    next_line = [1, 5, 10, 10, 5, 1]
+    lenght_of_new_line = len(pascal_triangle_line) + 1
     y = 1
-    while y <= len(values):
-        dictionary[''.join(dictionary.get(values[len(values) - x]))] = values[len(values) - x]
-        del dictionary[values[len(values) - x]]
-        x += 1
+    while y + 1 < lenght_of_new_line:
+        next_line[y] = pascal_triangle_line[y - 1] + pascal_triangle_line[y]
         y += 1
-    print (dictionary)
-
-
+    next_line.append(1)
+    print (next_line)
 
 if __name__ == "__main__":
-    gcd()
+    #gcd()
     #reverseDictionary()
+    #triangleWords()
+    pascal()
