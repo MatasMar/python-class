@@ -38,7 +38,7 @@ def triangleWords():
        print (miniResultsList)
 
 def pascal():
-    pascal_triangle_line = [1, 5, 10, 10, 5, 1] #nezinau ar reikejo input padaryt, ar ne 
+    pascal_triangle_line = [1, 5, 10, 10, 5, 1] #nezinau ar reikejo input padaryt, ar ne
     next_line = [1, 5, 10, 10, 5, 1]
     lenght_of_new_line = len(pascal_triangle_line) + 1
     y = 1
@@ -48,8 +48,18 @@ def pascal():
     next_line.append(1)
     print (next_line)
 
+def comprehensions():
+    print([i * 2 + 1 for i in [0, 1, 2, 3]])
+    print ([i % 3 == 0 for i in [3, 5, 9, 8]])
+    print ([ i[3:] for i in ["TA_sam", "TA_guido", "student_poohbear", "student_htiek"] if len(i) <= 8])
+    print ([i[:1].upper() for i in ['apple', 'orange', 'pear']])
+    print ([i for i in ['apple', 'orange', 'pear'] if len(i) < 6])
+    print ([[i, len(i)] for i in ['apple', 'orange', 'pear']]) # cia neisejo paprastu brackets padaryt
+    print ({v:k for v in ['apple', 'orange', 'pear'] for k in [len(v)]}) # cia maiso tvarka kiekviena karta
+
 if __name__ == "__main__":
     #gcd()
     #reverseDictionary()
     #triangleWords()
-    pascal()
+    #pascal()
+    comprehensions()
