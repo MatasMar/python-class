@@ -1,5 +1,6 @@
 #!/usr/bin/env python3 -tt
 import csv
+import string
 
 def gcd():
     userInputA = int(input("number a:"))
@@ -24,18 +25,21 @@ def reverseDictionary():
 def triangleWords():
    with open('words', newline= '') as inputfile:
        results = inputfile.read().split()
-       resultsList = []
-       miniResultsList = []
-       x = len(results) - 6
-       y = len(list(results[len(results) - x])) - 1
-       print (ord(''.join(list(results[len(results) - x])[len(list(results[len(results) - x])) - y])))
-       print (y)
-       print (x)
-       print (len(results))
-       while y >= 0:
-           miniResultsList.append(ord(''.join(list(results[len(results) - x])[len(list(results[len(results) - x])) - y])))
-           y -= 1
-       print (miniResultsList)
+       triangle_numbers = [round(i * (i + 1) / 2) for i in range(100)]
+       y = len(results)
+       counter = 0
+       triangle_word_count = 0
+       while counter != y:
+           word_ord_value = sum([ ord(i) - 96 for i in ''.join(results[counter]) if ord(i) - 96 > 0])
+           word_with_uppercase = [ i for i in ''.join(results[counter]) if ord(i) - 96 < 0]
+           if len(word_with_uppercase) != 0:
+               final_value = word_ord_value - sum([ord (i) - 96 for i in word_with_uppercase])
+           else:
+               final_value = word_ord_value
+           if final_value in triangle_numbers:
+               triangle_word_count += 1
+           counter += 1
+       print (triangle_word_count)
 
 def pascal():
     pascal_triangle_line = [1, 5, 10, 10, 5, 1] #nezinau ar reikejo input padaryt, ar ne
@@ -57,9 +61,21 @@ def comprehensions():
     print ([[i, len(i)] for i in ['apple', 'orange', 'pear']]) # cia neisejo paprastu brackets padaryt
     print ({v:k for v in ['apple', 'orange', 'pear'] for k in [len(v)]}) # cia maiso tvarka kiekviena karta
 
+def cyclone_phrases():
+    user_input = [ i for i in (input("insert phrase:"))]
+    x = len(user_input) - 1
+    y = 0
+    print (''.join(user_input))
+
+
+
+
+
+
 if __name__ == "__main__":
     #gcd()
     #reverseDictionary()
-    #triangleWords()
+    triangleWords()
     #pascal()
-    comprehensions()
+    #comprehensions()
+    #cyclone_phrases()
