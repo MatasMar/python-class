@@ -50,7 +50,9 @@ def pascal():
         next_line[y] = pascal_triangle_line[y - 1] + pascal_triangle_line[y]
         y += 1
     next_line.append(1)
-    print (next_line)
+
+
+
 
 def comprehensions():
     print([i * 2 + 1 for i in [0, 1, 2, 3]])
@@ -61,21 +63,43 @@ def comprehensions():
     print ([[i, len(i)] for i in ['apple', 'orange', 'pear']]) # cia neisejo paprastu brackets padaryt
     print ({v:k for v in ['apple', 'orange', 'pear'] for k in [len(v)]}) # cia maiso tvarka kiekviena karta
 
-def cyclone_phrases():
-    user_input = [ i for i in (input("insert phrase:"))]
-    x = len(user_input) - 1
-    y = 0
-    print (''.join(user_input))
 
+def is_cyclone_word(word):
+    word = [i for i in word.lower()]
+    lenght_of_word = len(word) - 1
+    character_counter = 0
+    cycle_counter_for_reverse = 1
+    character_counter_for_reverse = 0
+    reverse = word[::-1]
+    while character_counter <= lenght_of_word / 2:
+        if ord(word[character_counter]) - 96 > ord(word[lenght_of_word - character_counter]) - 96:
+            return False
+        character_counter += 1
+    while cycle_counter_for_reverse <= lenght_of_word / 2:
+        if ord(reverse[character_counter_for_reverse]) - 96 > ord(reverse[lenght_of_word - cycle_counter_for_reverse]) - 96:
+            return False
+        cycle_counter_for_reverse += 1
+        character_counter_for_reverse += 1
+    return True
 
-
+def  is_cyclone_phrase(phrase):
+    phrase = phrase.split()
+    cyclone_words = []
+    for i in phrase:
+        if is_cyclone_word(i) == True:
+                cyclone_words.append(1)
+    if len(phrase) == len(cyclone_words):
+        print ('phrase is cyclone!')
+    else:
+        print ('phrase is not cyclone!')
 
 
 
 if __name__ == "__main__":
     #gcd()
     #reverseDictionary()
-    triangleWords()
+    #triangleWords()
     #pascal()
     #comprehensions()
-    #cyclone_phrases()
+    is_cyclone_phrase(input('phrase:'))
+    #is_cyclone_word(input('word:'))
